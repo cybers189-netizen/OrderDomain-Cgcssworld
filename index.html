@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- ✅ MOBILE FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cgcssworld | Free Facebook SMM Test</title>
 
 <style>
@@ -25,22 +29,23 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:16px;
 }
 
+/* MOBILE FRIENDLY CARD */
 .card{
   width:100%;
   max-width:420px;
   background:#020617;
   border:1px solid var(--border);
-  border-radius:16px;
-  padding:24px;
+  border-radius:18px;
+  padding:20px;
   box-shadow:0 0 40px rgba(37,99,235,.15);
 }
 
 .title{
   text-align:center;
-  font-size:1.6rem;
+  font-size:1.5rem;
   font-weight:700;
   background:var(--accent);
   -webkit-background-clip:text;
@@ -50,12 +55,12 @@ body{
 .subtitle{
   text-align:center;
   color:var(--muted);
-  font-size:.9rem;
+  font-size:.85rem;
   margin-bottom:18px;
 }
 
 label{
-  font-size:.8rem;
+  font-size:.75rem;
   color:var(--muted);
   display:block;
   margin-bottom:6px;
@@ -63,12 +68,13 @@ label{
 
 input,select{
   width:100%;
-  padding:12px;
+  padding:14px;
   background:#020617;
   border:1px solid var(--border);
-  border-radius:10px;
+  border-radius:12px;
   color:var(--text);
   margin-bottom:14px;
+  font-size:1rem;
 }
 
 input:focus,select:focus{
@@ -79,20 +85,21 @@ input:focus,select:focus{
 
 button{
   width:100%;
-  padding:13px;
+  padding:15px;
   border:none;
-  border-radius:12px;
+  border-radius:14px;
   background:var(--accent);
   color:#fff;
   font-weight:700;
+  font-size:1rem;
   cursor:pointer;
 }
 
 .note{
   text-align:center;
-  font-size:.75rem;
+  font-size:.7rem;
   color:var(--muted);
-  margin-top:10px;
+  margin-top:8px;
 }
 
 #form-result{
@@ -108,7 +115,7 @@ button{
 }
 
 #thank-you h3{
-  font-size:1.4rem;
+  font-size:1.35rem;
   background:var(--success);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -120,7 +127,17 @@ button{
   border-radius:12px;
   background:rgba(34,197,94,.08);
   border:1px solid rgba(34,197,94,.3);
-  font-size:.85rem;
+  font-size:.8rem;
+}
+
+/* EXTRA MOBILE POLISH */
+@media (max-width:480px){
+  .card{
+    padding:18px;
+  }
+  button{
+    padding:16px;
+  }
 }
 </style>
 </head>
@@ -137,7 +154,12 @@ button{
     <form id="smm-form">
 
       <label>Cgcssworld Username</label>
-      <input type="text" name="fi-sender-userId" placeholder="Enter your username" required>
+      <input
+        type="text"
+        name="fi-sender-userId"
+        placeholder="Enter your username"
+        required
+      >
 
       <label>Category</label>
       <select name="fi-select-category" required>
@@ -158,10 +180,21 @@ button{
       </select>
 
       <label>Quantity (1–10)</label>
-      <input type="number" name="fi-number-quantity" min="1" max="10" required>
+      <input
+        type="number"
+        name="fi-number-quantity"
+        min="1"
+        max="10"
+        required
+      >
 
       <label>Facebook Profile / Post Link</label>
-      <input type="url" name="fi-url-accountLink" placeholder="https://facebook.com/..." required>
+      <input
+        type="url"
+        name="fi-url-accountLink"
+        placeholder="https://facebook.com/..."
+        required
+      >
 
       <button type="submit">Submit Free Test</button>
     </form>
@@ -173,7 +206,7 @@ button{
   <!-- THANK YOU -->
   <div id="thank-you">
     <h3>Thank You for Your Order!</h3>
-    <p style="color:#94a3b8;font-size:.9rem;">
+    <p style="color:#94a3b8;font-size:.85rem;">
       Your free Facebook SMM test has been submitted successfully.
     </p>
 
@@ -190,6 +223,7 @@ button{
 
 </div>
 
+<!-- FORM INIT -->
 <script src="https://forminit.com/sdk/v1/forminit.js"></script>
 <script>
 const forminit = new Forminit();
@@ -218,4 +252,4 @@ form.addEventListener('submit', async (e) => {
 </script>
 
 </body>
-</html>
+          </html>
