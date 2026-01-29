@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cgcssworld | Free Facebook SMM Test</title>
+
+<style>
+:root{
+  --bg:#020617;
+  --border:#1e293b;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:linear-gradient(135deg,#2563eb,#22d3ee);
+  --success:linear-gradient(135deg,#22c55e,#4ade80);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#020617,#000);
+  font-family:Segoe UI,sans-serif;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background:#020617;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 0 40px rgba(37,99,235,.15);
+}
+
+.title{
+  text-align:center;
+  font-size:1.6rem;
+  font-weight:700;
+  background:var(--accent);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:.9rem;
+  margin-bottom:18px;
+}
+
+label{
+  font-size:.8rem;
+  color:var(--muted);
+  display:block;
+  margin-bottom:6px;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  background:#020617;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  margin-bottom:14px;
+}
+
+input:focus,select:focus{
+  outline:none;
+  border-color:#38bdf8;
+  box-shadow:0 0 0 2px rgba(56,189,248,.15);
+}
+
+button{
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.note{
+  text-align:center;
+  font-size:.75rem;
+  color:var(--muted);
+  margin-top:10px;
+}
+
+#form-result{
+  text-align:center;
+  margin-top:10px;
+  font-size:.85rem;
+}
+
+/* THANK YOU */
+#thank-you{
+  display:none;
+  text-align:center;
+}
+
+#thank-you h3{
+  font-size:1.4rem;
+  background:var(--success);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.thank-box{
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(34,197,94,.08);
+  border:1px solid rgba(34,197,94,.3);
+  font-size:.85rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- ORDER FORM -->
+  <div id="order-form">
+    <div class="title">Cgcssworld</div>
+    <div class="subtitle">Free Facebook SMM Test (Max 10)</div>
+
+    <form id="smm-form">
+
+      <label>Cgcssworld Username</label>
+      <input type="text" name="fi-sender-userId" placeholder="Enter your username" required>
+
+      <label>Category</label>
+      <select name="fi-select-category" required>
+        <option value="">Select category</option>
+        <option value="Facebook">Facebook</option>
+      </select>
+
+      <label>Service</label>
+      <select name="fi-select-service" required>
+        <option value="">Select service</option>
+        <option value="Followers">Followers</option>
+        <option value="Likes">Likes</option>
+        <option value="Love Reaction">Love Reaction</option>
+        <option value="Angry Reaction">Angry Reaction</option>
+        <option value="Haha Reaction">Haha Reaction</option>
+        <option value="Wow Reaction">Wow Reaction</option>
+        <option value="Sad Reaction">Sad Reaction</option>
+      </select>
+
+      <label>Quantity (1–10)</label>
+      <input type="number" name="fi-number-quantity" min="1" max="10" required>
+
+      <label>Facebook Profile / Post Link</label>
+      <input type="url" name="fi-url-accountLink" placeholder="https://facebook.com/..." required>
+
+      <button type="submit">Submit Free Test</button>
+    </form>
+
+    <div class="note">⚡ One free test per username</div>
+    <p id="form-result"></p>
+  </div>
+
+  <!-- THANK YOU -->
+  <div id="thank-you">
+    <h3>Thank You for Your Order!</h3>
+    <p style="color:#94a3b8;font-size:.9rem;">
+      Your free Facebook SMM test has been submitted successfully.
+    </p>
+
+    <div class="thank-box">
+      ⏳ Please wait for approval<br>
+      ⚡ Delivery usually starts within <b>24 hours</b><br>
+      🚫 One free test per username
+    </div>
+
+    <button style="margin-top:16px" onclick="location.reload()">
+      Submit Another Order
+    </button>
+  </div>
+
+</div>
+
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script>
+const forminit = new Forminit();
+const FORM_ID = 'bufgq4v4nzd';
+
+const form = document.getElementById('smm-form');
+const orderForm = document.getElementById('order-form');
+const thankYou = document.getElementById('thank-you');
+const result = document.getElementById('form-result');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const { error } = await forminit.submit(FORM_ID, formData);
+
+  if (error) {
+    result.textContent = error.message;
+    result.style.color = '#ef4444';
+    return;
+  }
+
+  orderForm.style.display = 'none';
+  thankYou.style.display = 'block';
+});
+</script>
+
+</body>
+</html>
