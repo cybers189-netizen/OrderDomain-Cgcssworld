@@ -70,6 +70,11 @@ input,select{
   color:var(--text);
   margin-bottom:6px;
 }
+.small-note{
+  font-size:.65rem;
+  color:var(--muted);
+  margin-bottom:12px;
+}
 .warning{
   font-size:.7rem;
   color:var(--danger);
@@ -145,6 +150,7 @@ button.loading{
 
     <label>Email</label>
     <input type="email" name="fi-sender-email" placeholder="your@email.com" required>
+    <div class="small-note">⚠ Please use a real and active email so we can contact you once your order is completed.</div>
 
     <label>Category</label>
     <select id="category" name="fi-select-category" required>
@@ -180,6 +186,7 @@ button.loading{
   <p>Your order was submitted successfully.</p>
   <div class="thank-box">
     ⏳ Delivery may take up to 24 hours<br>
+    📧 We will contact you via the email you provided once your order is completed.<br>
     🚫 One free test only
   </div>
 </div>
@@ -254,4 +261,4 @@ document.getElementById('smm-form').addEventListener('submit',async e=>{
 </script>
 
 </body>
-</html>
+      </html>
