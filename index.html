@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ MOBILE FIX -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Cgcssworld | Free Facebook SMM Test</title>
+<title>Cgcssworld | Free SMM Test</title>
 
 <style>
 :root{
-  --bg:#020617;
   --border:#1e293b;
   --text:#e5e7eb;
   --muted:#94a3b8;
   --accent:linear-gradient(135deg,#2563eb,#22d3ee);
   --success:linear-gradient(135deg,#22c55e,#4ade80);
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   min-height:100vh;
@@ -31,8 +25,6 @@ body{
   justify-content:center;
   padding:16px;
 }
-
-/* MOBILE FRIENDLY CARD */
 .card{
   width:100%;
   max-width:420px;
@@ -40,9 +32,7 @@ body{
   border:1px solid var(--border);
   border-radius:18px;
   padding:20px;
-  box-shadow:0 0 40px rgba(37,99,235,.15);
 }
-
 .title{
   text-align:center;
   font-size:1.5rem;
@@ -51,21 +41,18 @@ body{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .subtitle{
   text-align:center;
   color:var(--muted);
   font-size:.85rem;
   margin-bottom:18px;
 }
-
 label{
   font-size:.75rem;
   color:var(--muted);
-  display:block;
   margin-bottom:6px;
+  display:block;
 }
-
 input,select{
   width:100%;
   padding:14px;
@@ -74,15 +61,7 @@ input,select{
   border-radius:12px;
   color:var(--text);
   margin-bottom:14px;
-  font-size:1rem;
 }
-
-input:focus,select:focus{
-  outline:none;
-  border-color:#38bdf8;
-  box-shadow:0 0 0 2px rgba(56,189,248,.15);
-}
-
 button{
   width:100%;
   padding:15px;
@@ -91,36 +70,13 @@ button{
   background:var(--accent);
   color:#fff;
   font-weight:700;
-  font-size:1rem;
-  cursor:pointer;
 }
-
 .note{
   text-align:center;
   font-size:.7rem;
   color:var(--muted);
-  margin-top:8px;
 }
-
-#form-result{
-  text-align:center;
-  margin-top:10px;
-  font-size:.85rem;
-}
-
-/* THANK YOU */
-#thank-you{
-  display:none;
-  text-align:center;
-}
-
-#thank-you h3{
-  font-size:1.35rem;
-  background:var(--success);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
+#thank-you{display:none;text-align:center}
 .thank-box{
   margin-top:14px;
   padding:14px;
@@ -129,16 +85,6 @@ button{
   border:1px solid rgba(34,197,94,.3);
   font-size:.8rem;
 }
-
-/* EXTRA MOBILE POLISH */
-@media (max-width:480px){
-  .card{
-    padding:18px;
-  }
-  button{
-    padding:16px;
-  }
-}
 </style>
 </head>
 
@@ -146,110 +92,93 @@ button{
 
 <div class="card">
 
-  <!-- ORDER FORM -->
-  <div id="order-form">
-    <div class="title">Cgcssworld</div>
-    <div class="subtitle">Free Facebook SMM Test (Max 10)</div>
+<div id="order-form">
+  <div class="title">Cgcssworld</div>
+  <div class="subtitle">Free Facebook & YouTube SMM Test</div>
 
-    <form id="smm-form">
+  <form id="smm-form">
 
-      <label>Cgcssworld Username</label>
-      <input
-        type="text"
-        name="fi-sender-userId"
-        placeholder="Enter your username"
-        required
-      >
+    <label>Username</label>
+    <input type="text" name="fi-sender-userId" placeholder="Enter your username" required>
 
-      <label>Category</label>
-      <select name="fi-select-category" required>
-        <option value="">Select category</option>
-        <option value="Facebook">Facebook</option>
-      </select>
+    <label>Category</label>
+    <select id="category" name="fi-select-category" required>
+      <option value="">Select category</option>
+      <option value="Facebook">Facebook</option>
+      <option value="YouTube">YouTube</option>
+    </select>
 
-      <label>Service</label>
-      <select name="fi-select-service" required>
-        <option value="">Select service</option>
-        <option value="Followers">Followers</option>
-        <option value="Likes">Likes</option>
-        <option value="Love Reaction">Love Reaction</option>
-        <option value="Angry Reaction">Angry Reaction</option>
-        <option value="Haha Reaction">Haha Reaction</option>
-        <option value="Wow Reaction">Wow Reaction</option>
-        <option value="Sad Reaction">Sad Reaction</option>
-      </select>
+    <label>Service</label>
+    <select id="service" name="fi-select-service" required></select>
 
-      <label>Quantity (1–10)</label>
-      <input
-        type="number"
-        name="fi-number-quantity"
-        min="1"
-        max="10"
-        required
-      >
+    <label>Quantity</label>
+    <input id="quantity" type="number" name="fi-number-quantity" required>
 
-      <label>Facebook Profile / Post Link</label>
-      <input
-        type="url"
-        name="fi-url-accountLink"
-        placeholder="https://facebook.com/..."
-        required
-      >
+    <label>Link</label>
+    <input id="link" type="url" name="fi-url-accountLink" placeholder="Paste link here" required>
 
-      <button type="submit">Submit Free Test</button>
-    </form>
+    <button type="submit">Submit Free Test</button>
+  </form>
 
-    <div class="note">⚡ One free test per username</div>
-    <p id="form-result"></p>
+  <div class="note">⚠ One free test per username</div>
+</div>
+
+<div id="thank-you">
+  <h3 style="background:var(--success);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+    Thank You!
+  </h3>
+  <p>Your order was submitted successfully.</p>
+  <div class="thank-box">
+    ⏳ Delivery may take up to 24 hours<br>
+    🚫 One free test only
   </div>
-
-  <!-- THANK YOU -->
-  <div id="thank-you">
-    <h3>Thank You for Your Order!</h3>
-    <p style="color:#94a3b8;font-size:.85rem;">
-      Your free Facebook SMM test has been submitted successfully.
-    </p>
-
-    <div class="thank-box">
-      ⏳ Please wait for approval<br>
-      ⚡ Delivery usually starts within <b>24 hours</b><br>
-      🚫 One free test per username
-    </div>
-
-    <button style="margin-top:16px" onclick="location.reload()">
-      Submit Another Order
-    </button>
-  </div>
+  <button style="margin-top:16px" onclick="location.reload()">Submit Again</button>
+</div>
 
 </div>
 
-<!-- FORM INIT -->
 <script src="https://forminit.com/sdk/v1/forminit.js"></script>
 <script>
+const category = document.getElementById('category');
+const service = document.getElementById('service');
+const quantity = document.getElementById('quantity');
+const link = document.getElementById('link');
+
+category.addEventListener('change', () => {
+  service.innerHTML = '';
+
+  if(category.value === 'Facebook'){
+    service.innerHTML = `
+      <option value="Followers">Followers</option>
+      <option value="Views">Views</option>
+    `;
+    quantity.min = 1;
+    quantity.max = 10;
+    quantity.placeholder = '1 – 10';
+    link.placeholder = 'https://facebook.com/...';
+  }
+
+  if(category.value === 'YouTube'){
+    service.innerHTML = `<option value="Views">Views</option>`;
+    quantity.min = 1;
+    quantity.max = 18;
+    quantity.placeholder = '1 – 18';
+    link.placeholder = 'https://youtube.com/watch?v=...';
+  }
+});
+
 const forminit = new Forminit();
 const FORM_ID = 'bufgq4v4nzd';
 
-const form = document.getElementById('smm-form');
-const orderForm = document.getElementById('order-form');
-const thankYou = document.getElementById('thank-you');
-const result = document.getElementById('form-result');
-
-form.addEventListener('submit', async (e) => {
+document.getElementById('smm-form').addEventListener('submit', async e => {
   e.preventDefault();
-
-  const formData = new FormData(form);
-  const { error } = await forminit.submit(FORM_ID, formData);
-
-  if (error) {
-    result.textContent = error.message;
-    result.style.color = '#ef4444';
-    return;
+  const { error } = await forminit.submit(FORM_ID, new FormData(e.target));
+  if(!error){
+    document.getElementById('order-form').style.display='none';
+    document.getElementById('thank-you').style.display='block';
   }
-
-  orderForm.style.display = 'none';
-  thankYou.style.display = 'block';
 });
 </script>
 
 </body>
-          </html>
+</html>
