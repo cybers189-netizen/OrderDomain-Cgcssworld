@@ -19,6 +19,7 @@
   --muted:#94a3b8;
   --accent:linear-gradient(135deg,#2563eb,#22d3ee);
   --success:linear-gradient(135deg,#22c55e,#4ade80);
+  --danger:#ef4444;
 }
 *{box-sizing:border-box}
 body{
@@ -67,7 +68,13 @@ input,select{
   border:1px solid var(--border);
   border-radius:12px;
   color:var(--text);
-  margin-bottom:14px;
+  margin-bottom:6px;
+}
+.warning{
+  font-size:.7rem;
+  color:var(--danger);
+  margin-bottom:10px;
+  display:none;
 }
 button{
   width:100%;
@@ -78,11 +85,38 @@ button{
   color:#fff;
   font-weight:700;
   cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 }
+button.loading{
+  opacity:.7;
+  pointer-events:none;
+}
+.spinner{
+  width:16px;
+  height:16px;
+  border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 .note{
   text-align:center;
   font-size:.7rem;
   color:var(--muted);
+}
+#error-box{
+  display:none;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(239,68,68,.1);
+  border:1px solid rgba(239,68,68,.3);
+  font-size:.75rem;
 }
 #thank-you{display:none;text-align:center}
 .thank-box{
@@ -107,7 +141,7 @@ button{
   <form id="smm-form">
 
     <label>Username</label>
-    <input type="text" name="fi-sender-userId" placeholder="Enter your username" required>
+    <input type="text" name="fi-sender-userId" required>
 
     <label>Category</label>
     <select id="category" name="fi-select-category" required>
@@ -121,14 +155,19 @@ button{
 
     <label>Quantity</label>
     <input id="quantity" type="number" name="fi-number-quantity" required>
+    <div id="qty-warning" class="warning"></div>
 
     <label>Link</label>
-    <input id="link" type="url" name="fi-url-accountLink" placeholder="Paste link here" required>
+    <input id="link" type="url" name="fi-url-accountLink" required>
 
-    <button type="submit">Submit Free Test</button>
+    <button id="submitBtn" type="submit">
+      <span class="btn-text">Submit Free Test</span>
+    </button>
+
   </form>
 
-  <div class="note">⚠ One free test per username</div>
+  <div id="error-box"></div>
+  <div class="note">⚠ One free test per device</div>
 </div>
 
 <div id="thank-you">
@@ -140,7 +179,6 @@ button{
     ⏳ Delivery may take up to 24 hours<br>
     🚫 One free test only
   </div>
-  <button style="margin-top:16px" onclick="location.reload()">Submit Again</button>
 </div>
 
 </div>
@@ -150,38 +188,59 @@ button{
 const category = document.getElementById('category');
 const service = document.getElementById('service');
 const quantity = document.getElementById('quantity');
-const link = document.getElementById('link');
+const warning = document.getElementById('qty-warning');
+const btn = document.getElementById('submitBtn');
+const errorBox = document.getElementById('error-box');
 
-category.addEventListener('change', () => {
-  service.innerHTML = '';
+let maxQty = 0;
 
-  if(category.value === 'Facebook'){
-    service.innerHTML = `
-      <option value="Followers">Followers</option>
-      <option value="Views">Views</option>
-    `;
-    quantity.min = 1;
-    quantity.max = 10;
-    quantity.placeholder = '1 – 10';
-    link.placeholder = 'https://facebook.com/...';
+// DEVICE LIMIT
+if(localStorage.getItem('cgcssworld_submitted')){
+  document.getElementById('order-form').style.display='none';
+  errorBox.style.display='block';
+  errorBox.textContent='⚠ You already used your free test on this device.';
+}
+
+category.addEventListener('change',()=>{
+  service.innerHTML='';
+  warning.style.display='none';
+
+  if(category.value==='Facebook'){
+    service.innerHTML='<option>Followers</option><option>Views</option>';
+    maxQty=25;  // <-- UPDATED MAX FOR FB VIEWS
+    quantity.placeholder='1 – 25';
   }
+  if(category.value==='YouTube'){
+    service.innerHTML='<option>Views</option>';
+    maxQty=18;
+    quantity.placeholder='1 – 18';
+  }
+});
 
-  if(category.value === 'YouTube'){
-    service.innerHTML = `<option value="Views">Views</option>`;
-    quantity.min = 1;
-    quantity.max = 18;
-    quantity.placeholder = '1 – 18';
-    link.placeholder = 'https://youtube.com/watch?v=...';
+quantity.addEventListener('input',()=>{
+  if(quantity.value>maxQty){
+    warning.style.display='block';
+    warning.textContent=`Maximum allowed is ${maxQty}`;
+    btn.disabled=true;
+  }else{
+    warning.style.display='none';
+    btn.disabled=false;
   }
 });
 
 const forminit = new Forminit();
-const FORM_ID = 'bufgq4v4nzd';
+const FORM_ID='bufgq4v4nzd';
 
-document.getElementById('smm-form').addEventListener('submit', async e => {
+document.getElementById('smm-form').addEventListener('submit',async e=>{
   e.preventDefault();
-  const { error } = await forminit.submit(FORM_ID, new FormData(e.target));
+
+  btn.classList.add('loading');
+  btn.innerHTML='<div class="spinner"></div> Submitting…';
+
+  const { error } = await forminit.submit(FORM_ID,new FormData(e.target));
+
   if(!error){
+    localStorage.setItem('cgcssworld_submitted','true');
     document.getElementById('order-form').style.display='none';
     document.getElementById('thank-you').style.display='block';
   }
@@ -189,4 +248,4 @@ document.getElementById('smm-form').addEventListener('submit', async e => {
 </script>
 
 </body>
-</html>
+  </html>
