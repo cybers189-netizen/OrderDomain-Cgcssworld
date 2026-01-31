@@ -143,6 +143,9 @@ button.loading{
     <label>Username</label>
     <input type="text" name="fi-sender-userId" required>
 
+    <label>Email</label>
+    <input type="email" name="fi-sender-email" placeholder="your@email.com" required>
+
     <label>Category</label>
     <select id="category" name="fi-select-category" required>
       <option value="">Select category</option>
@@ -201,13 +204,14 @@ if(localStorage.getItem('cgcssworld_submitted')){
   errorBox.textContent='⚠ You already used your free test on this device.';
 }
 
+// Update service options and max quantity based on category
 category.addEventListener('change',()=>{
   service.innerHTML='';
   warning.style.display='none';
 
   if(category.value==='Facebook'){
     service.innerHTML='<option>Followers</option><option>Views</option>';
-    maxQty=25;  // <-- UPDATED MAX FOR FB VIEWS
+    maxQty=25;  // Facebook max updated
     quantity.placeholder='1 – 25';
   }
   if(category.value==='YouTube'){
@@ -217,6 +221,7 @@ category.addEventListener('change',()=>{
   }
 });
 
+// Live quantity check
 quantity.addEventListener('input',()=>{
   if(quantity.value>maxQty){
     warning.style.display='block';
@@ -228,6 +233,7 @@ quantity.addEventListener('input',()=>{
   }
 });
 
+// Forminit submit
 const forminit = new Forminit();
 const FORM_ID='bufgq4v4nzd';
 
@@ -248,4 +254,4 @@ document.getElementById('smm-form').addEventListener('submit',async e=>{
 </script>
 
 </body>
-  </html>
+</html>
